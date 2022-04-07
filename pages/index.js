@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Header from "../components/Header";
-import Nav from "../components/Nav";
-import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -13,6 +11,18 @@ export default function Home() {
       </Head>
 
       <Header />
+      <div className="flex flex-col mx-auto w-11/12 justify-center items-center">
+        <h1 className="text-center font-bold text-3xl mb-8">News App</h1>
+        <p className="text-gray-800 text-center text-xl leading-relaxed border rounded-2xl p-10">
+          👋 Welcome to this 📰 news app created by{" "}
+          <a href="https://charleskrook.io/">Charles</a>. <br />
+          I 🔧 this app using Server Side Rendering with NextJS.
+          <br />
+          Head over to the{" "}
+          <a href="https://github.com/ckrook/News-App">github</a> repo if you
+          want to 👀 at the code.
+        </p>
+      </div>
     </div>
   );
 }

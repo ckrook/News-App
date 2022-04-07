@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 import Header from "../../components/Header";
 import { useRouter } from "next/router";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 function Feed({ pageNumber, articles }) {
   const router = useRouter();
@@ -14,7 +15,7 @@ function Feed({ pageNumber, articles }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Header />
-        <main className="flex flex-col w-10/12 m-auto justify-center">
+        <main className="flex flex-col w-8/12 max-w-[700px] m-auto justify-center">
           {articles.map((article, index) => (
             <div
               key={index}
@@ -26,11 +27,11 @@ function Feed({ pageNumber, articles }) {
               >
                 {article.title}
               </h1>
-              <p className="mb-4">{article.description}</p>
+              <p className="mb-8">{article.description}</p>
               {!!article.urlToImage && (
                 <img
                   onClick={() => (window.location.href = article.url)}
-                  className="m-auto cursor-pointer "
+                  className="m-auto cursor-pointer w-full"
                   src={article.urlToImage}
                   alt={article.title}
                 />
@@ -38,7 +39,7 @@ function Feed({ pageNumber, articles }) {
             </div>
           ))}
         </main>
-        <div className="flex justify-center space-x-6 py-8">
+        <div className="flex justify-center items-center space-x-6 py-8">
           <div
             onClick={() => {
               if (pageNumber > 1) {
@@ -47,18 +48,18 @@ function Feed({ pageNumber, articles }) {
             }}
             className={pageNumber === 1 ? "disable" : "active"}
           >
-            previous page
+            <MdKeyboardArrowLeft className="text-2xl cursor-pointer" />
           </div>
-          <div>{pageNumber}</div>
+          <div className="font-semibold">{pageNumber}</div>
           <div
             onClick={() => {
               if (pageNumber < 5) {
                 router.push(`/feed/${pageNumber + 1}`);
               }
             }}
-            className={pageNumber === 1 ? "disable" : "active"}
+            className={pageNumber === 5 ? "disable" : "active"}
           >
-            Next page
+            <MdKeyboardArrowRight className="text-2xl cursor-pointer" />
           </div>
         </div>
       </div>
