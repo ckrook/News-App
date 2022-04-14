@@ -16,7 +16,7 @@ function Feed({ pageNumber, articles }) {
         </Head>
         <Header />
         <main className="flex flex-col w-8/12 max-w-[700px] m-auto justify-center">
-          {articles.map((article, index) => (
+          {articles?.map((article, index) => (
             <div
               key={index}
               className="text-center border-b-4 border-black mb-8 pb-8"
